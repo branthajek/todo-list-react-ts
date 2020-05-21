@@ -2,7 +2,7 @@ import React, { useRef } from 'react';
 
 import './new-todo.css';
 
-// would usually do an interface here, but doing type as demonstration
+// would usually do an interface here, but doing type for science
 type NewTodoProps = {
     onAddTodo: (todoText: string) => void;
 };
@@ -13,7 +13,6 @@ const NewTodo: React.FC<NewTodoProps> = props => {
     const textInputRef = useRef<HTMLInputElement>(null);
 
     const todoSubmitHandler = (event: React.FormEvent) => {
-        // prevent sending request to server, handing only in JS
         event.preventDefault();
         // ! to let TS know that the value will not be null
         const enteredText = textInputRef.current!.value;
@@ -23,7 +22,7 @@ const NewTodo: React.FC<NewTodoProps> = props => {
     return (
         <form onSubmit={todoSubmitHandler}>
             <div className="form-control">
-                <label htmlFor="todo-text">Todo List</label>
+                <label htmlFor="todo-text">To-Do List</label>
                 <input type="text" id="todo-text" ref={textInputRef}/>
             </div>
             <button type="submit">Add Todo</button>
